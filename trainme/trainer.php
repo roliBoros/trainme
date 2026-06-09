@@ -1,3 +1,21 @@
+<?php
+
+session_start();
+
+include("connection.php");
+
+if (empty($_SESSION['id']) AND userIdFromCookie()) {
+
+    $_SESSION['id'] = userIdFromCookie();
+}
+
+if (empty($_SESSION['id'])) {
+
+    header("Location: index.php");
+    exit;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,8 +37,9 @@
               width: 130px;
           }
       </style>
-      
-    <body>  
+
+    </head>
+    <body>
 
     
       <div class="container">
